@@ -21,21 +21,21 @@ then
 fi
 
 # Check if group exists
-getent group "$group" >/dev/null || groupadd "$group"
+getent group "$group" >/dev/null || groupadd $group
 
 # Add users
 for user in `cat $users`;
 do
 
 	# Check if user exists
-	if id "$user" >/dev/null 2>&1;
+	if id $user >/dev/null 2>&1;
 	then
 		echo "User $user already exists"
 
 	else
 		# Create user and add to group
 		echo "Creating user $user ..."
-		useradd -m -g "$group" "$user"
+		useradd -m -g $group $user
 		echo "User $user created"
 
 		# Create SSH directory and generate SSH Keys
