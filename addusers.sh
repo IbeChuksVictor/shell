@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#######################################
-# Script to add users to Linux server.#
-#######################################
+########################################
+# Script to add users to Linux server. #
+########################################
 
 # Variables
 users=./users.csv
