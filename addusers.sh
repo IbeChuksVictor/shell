@@ -7,6 +7,7 @@
 # Variables
 users=./users.csv
 group="developers"
+shell="/bin/bash"
 
 # Check if user is root
 if [ $EUID -ne 0 ];
@@ -29,13 +30,14 @@ getent group "$group" >/dev/null || groupadd $group
 for user in `cat $users`;
 do
 	# Check if user exists
-	if [ id $user >/dev/null 2>&1 ];
+	if id $user >/dev/null 2>&1;
 	then
 		echo "User $user already exists"
+		usermod -a -G $group $user
 	else
 		# Create user and add to group
 		echo "Creating user $user ..."
-		useradd -m -g $group $user
+		useradd -m -s $shell -G $group $user
 		echo "User $user created"
 
 		# Create SSH directory and generate SSH Keys
@@ -43,8 +45,8 @@ do
 		sudo -u "$user" ssh-keygen -t rsa -b 2048 -f /home/"$user"/.ssh/id_rsa -q -N ""
 
 		# Set permissions for .ssh directory and keys
-		chown -R "$user":"$group" /home/"$user"/.ssh
-		chown -R "$user":"$group" /home/"$user"/.ssh/id_rsa
+		chown -R "$user":"$user" /home/"$user"/.ssh
+		chown -R "$user":"$user" /home/"$user"/.ssh/id_rsa
 		chmod -R 700 /home/"$user"/.ssh
 		chmod 600 /home/"$user"/.ssh/id_rsa
 	fi
