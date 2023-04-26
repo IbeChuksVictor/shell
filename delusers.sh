@@ -6,7 +6,6 @@
 
 # Variables
 users=./users.csv
-group="developers"
 
 # Check if user is root
 if [ $EUID -ne 0 ];
