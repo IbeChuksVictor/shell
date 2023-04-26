@@ -43,8 +43,8 @@ do
 		sudo -u "$user" ssh-keygen -t rsa -b 2048 -f /home/"$user"/.ssh/id_rsa -q -N ""
 
 		# Set permissions for .ssh directory and keys
-		chown -R "$user":"$user" /home/"$user"/.ssh
-		chown -R "$user":"$user" /home/"$user"/.ssh/id_rsa
+		chown -R "$user":"$group" /home/"$user"/.ssh
+		chown -R "$user":"$group" /home/"$user"/.ssh/id_rsa
 		chmod -R 700 /home/"$user"/.ssh
 		chmod 600 /home/"$user"/.ssh/id_rsa
 	fi
