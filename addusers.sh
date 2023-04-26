@@ -26,7 +26,7 @@ fi
 # Check if group exists
 getent group "$group" >/dev/null || groupadd $group
 
-# Add users
+# Adds users
 for user in `cat $users`;
 do
 	# Check if user exists
