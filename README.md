@@ -1,5 +1,5 @@
 # Add mulitple users to a Linux server.
-[Shell Script](https://github.com/IbeChuksVictor/shell/blob/main/delusers.sh) to create multiple users from a list of names in a file.
+[Shell Script](https://github.com/IbeChuksVictor/shell/blob/main/addusers.sh) to create multiple users from a list of names in a file.
 <br>
 The script;
 - Checks for user's permission to run script.
